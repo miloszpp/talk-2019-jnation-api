@@ -1,0 +1,106 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "RxJS + APIs = ❤",
+    "description": "",
+    "version": "1.0"
+  },
+  "produces": ["application/json"],
+  "paths": {
+    "/articles": {
+      "get": {
+        "tags": ["Articles"],
+        "description": "Get all articles",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/articles/{articleId}": {
+      "get": {
+        "tags": ["Articles"],
+        "description": "Get specific article",
+        "parameters": [{
+          "in": "path",
+          "name": "articleId",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {}
+      }
+    },
+    "/stocks/{symbol}": {
+      "get": {
+        "tags": ["Stocks"],
+        "description": "Get stock price",
+        "parameters": [{
+          "in": "path",
+          "name": "symbol",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {}
+      }
+    },
+    "/analyze": {
+      "post": {
+        "tags": ["Sentiment Analysis"],
+        "description": "Request analysis",
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/AnalyzeTask"
+          }
+        }],
+        "responses": {}
+      }
+    },
+    "/analyze/{taskId}": {
+      "get": {
+        "tags": ["Sentiment Analysis"],
+        "description": "Check the status of analysis",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "description": "ID of previously created task",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/analyze/{taskId}/cancel": {
+      "post": {
+        "tags": ["Sentiment Analysis"],
+        "description": "Cancel analysis",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "description": "ID of previously created task",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  },
+  "definitions": {
+    "AnalyzeTask": {
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
