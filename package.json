@@ -2,11 +2,13 @@
   "name": "talk-2019-jnation-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
-    "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./app/app.ts",
-    "prod": "tsc && node ./build/app.js"
+    "build-ts": "tsc --outDir dist; cp app/swagger.json dist",
+    "postinstall": "npm run build-ts",
+    "start": "npm run serve",
+    "serve": "node dist/app.js"
   },
   "author": "",
   "license": "ISC",
