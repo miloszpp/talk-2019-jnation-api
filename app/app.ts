@@ -27,6 +27,13 @@ const swaggerDocument = require('./swagger.json');
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+const logRequestStart = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  console.info(`${req.method} ${req.originalUrl}`)
+  next()
+}
+
+app.use(logRequestStart);
+
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
