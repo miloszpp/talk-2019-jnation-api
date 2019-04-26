@@ -19,5 +19,9 @@
     "swagger-ui-express": "^4.0.2",
     "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.4.3"
+  },
+  "engines": {
+    "npm": "~6.7.0",
+    "node": "~11.12.0"
   }
 }
