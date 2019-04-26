@@ -146,5 +146,5 @@ app.get('/articles/:articleId', function (req, res, next) {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function () {
-  console.log('Example app listening on port 3000!');
+  console.log(`Example app listening on port ${PORT}!`);
 });
